@@ -108,7 +108,7 @@ public partial class WorldGenerator : Node2D
 		}
 
 		// Print that the generation is complete
-		GD.PrintRich("[color=ROSY_BROWN][" + "[color=GREEN_YELLOW]" + Name + "[color=ROSY_BROWN]] " + "Finished generating terrain in " + (Time.GetTicksMsec() / 1000f) + " seconds with seed " + worldSeed);
+		GD.PrintRich("[color=ROSY_BROWN][" + "[color=GRAY]" + Name + "[color=ROSY_BROWN]] " + "Finished generating terrain in " + (Time.GetTicksMsec() / 1000f) + " seconds with seed " + worldSeed);
 	}
 
 	private FastNoiseLite GenerateNoise(int noiseSeed, float frequency = 0f)
