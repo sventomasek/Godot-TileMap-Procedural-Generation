@@ -4,7 +4,8 @@ Procedural Generation written in C# which uses Noise textures to generate a rand
 Ore and structures can be added to the terrain using custom resources.
 Structures can be drawn on a TileMap in a new Scene, the child Node2Ds will also generate with the structure (e.g., enemies and items).
 
-Also comes with a script that adds the ability to mine the tiles and add the ore to your inventory, all you have to do is add a Custom Data Layer "ore" to the TileMap and assign it to your ore tile with the name of your ore.
+Also comes with a script that adds the ability to mine the tiles and add the ore to your inventory.
+All you have to do is add a Custom Data Layer "ore" to the TileMap and assign it to your ore tile with the name of your ore.
 
 # How To Install
 1. Place all of the scripts into your Godot project
