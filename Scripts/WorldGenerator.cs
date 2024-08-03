@@ -49,6 +49,7 @@ public partial class WorldGenerator : Node2D
 	};
 	[Export] public Dictionary breakingAnimation = new Dictionary
 	{
+ 		{"Generate", true},
 		{"Layer", 3},
 		{"SourceID", 11}
 	};
