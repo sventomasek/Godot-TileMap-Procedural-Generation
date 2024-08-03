@@ -106,7 +106,7 @@ public partial class WorldGenerator : Node2D
 		}
 
 		// Print that the generation is complete
-		GD.PrintRich("[color=GREEN]Finished generating terrain in " + (Time.GetTicksMsec() / 1000f) + " seconds!");
+		GD.PrintRich("[color=ROSY_BROWN][" + "[color=GREEN_YELLOW]" + Name + "[color=ROSY_BROWN]] " + "Finished generating terrain in " + (Time.GetTicksMsec() / 1000f) + " seconds with seed " + worldSeed);
 	}
 
 	private FastNoiseLite GenerateNoise(int noiseSeed, float frequency = 0f)
@@ -236,6 +236,7 @@ public partial class WorldGenerator : Node2D
 						{
 							TileMap structureTileMap = structure.tileMapScene.Instantiate() as TileMap;
 
+							// Generate tiles
 							for (int layer = 0; layer < structureTileMap.GetLayersCount(); layer++)
 							{
 								foreach (Vector2I cell in structureTileMap.GetUsedCells(layer))
@@ -244,10 +245,33 @@ public partial class WorldGenerator : Node2D
 									Vector2I atlasCoords = structureTileMap.GetCellAtlasCoords(layer, cell);
 									Vector2I cellPos = new Vector2I(x, y) + cell;
 
-									tileMap.SetCell(layer, cellPos, sourceID, atlasCoords); // Place structure tiles
-									tileMap.EraseCell((int)oreConfig["Layer"], cellPos); // Erase ore tiles that generated on structures
+									// Check if the tile is outside the map
+									if (Mathf.Abs(cellPos.X) < mapSize.X / 2 && Mathf.Abs(cellPos.Y) < mapSize.Y / 2)
+									{
+										tileMap.SetCell(layer, cellPos, sourceID, atlasCoords); // Place structure tiles
+										tileMap.EraseCell((int)oreConfig["Layer"], cellPos); // Erase ore tiles that generated on structures
+									}
 								}
 							}
+
+							// Add children nodes to the scene
+							foreach (Node2D child in structureTileMap.GetChildren())
+							{
+								// Check if the tile is outside the map
+								int tileSize = structureTileMap.RenderingQuadrantSize;
+								Vector2 pos = structureTileMap.MapToLocal(new Vector2I(x, y)) + child.Position - new Vector2(tileSize / 2, tileSize / 2);
+								if (Mathf.Abs(tileMap.LocalToMap(pos).X) < mapSize.X / 2 && Mathf.Abs(tileMap.LocalToMap(pos).Y) < mapSize.Y / 2)
+								{
+									// Generate
+									structureTileMap.RemoveChild(child);
+									child.Owner = null;
+									GetTree().Root.AddChild(child);
+									child.GlobalPosition = pos;
+								}
+							}
+
+							// Delete the scene
+							structureTileMap.QueueFree();
 						}
 
 					}
