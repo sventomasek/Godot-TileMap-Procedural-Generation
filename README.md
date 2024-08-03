@@ -7,7 +7,12 @@ Structures can be drawn on a TileMap in a new Scene, the child Node2Ds will also
 Also comes with a script that adds the ability to mine the tiles and add the ore to your inventory.
 All you have to do is add a Custom Data Layer "ore" to the TileMap and assign it to your ore tile with the name of your ore.
 
-<img src="https://raw.githubusercontent.com/sventomasek/Godot-TileMap-Procedural-Generation/main/Images/Example1.png" width="500" />
+Here's an example of what I made using this system:
+
+<p float="left">
+   <img src="https://raw.githubusercontent.com/sventomasek/Godot-TileMap-Procedural-Generation/main/Images/Example1.png" width="500" />
+   <img src="https://raw.githubusercontent.com/sventomasek/Godot-TileMap-Procedural-Generation/main/Images/Example2.gif" width="500" />
+</p>
 
 # How To Install
 1. Place all of the scripts into your Godot project
