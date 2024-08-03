@@ -1,5 +1,6 @@
 # Godot TileMap Procedural Generation
 Procedural Generation which features: ores, structures and a world border.
+
 Written in C# so you need to have Godot .NET installed for it to work.
 
 # How To Install
@@ -32,4 +33,5 @@ Written in C# so you need to have Godot .NET installed for it to work.
 
 # Need Help?
 You can contact me in my Discord server https://discord.gg/MsF7kN54T7
+
 Just post your issue in the "tech-support" channel and I will try to help as soon as I can.
