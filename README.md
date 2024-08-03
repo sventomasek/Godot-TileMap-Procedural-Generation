@@ -16,11 +16,12 @@ Here's an example of what I made using this system:
 
 # How To Install
 1. Place all of the scripts into your Godot project
-2. Add a Node2D "WorldGenerator" to your main TileMap node
-3. Add WorldGenerator.cs to the Node2D
-4. Right click on the Generation Noise variable, pick FastNoiseLite and configure it to your liking
-5. Configure everything under the Tiles category (for example Ground Layer is your TileMaps ground layer, same for other variables. If you don't have a type of tiles just turn off "Generate")
-6. Run the game and it should work if you've configured it correctly.
+2. Add your Player Node to a group called "Player"
+3. Add a Node2D "WorldGenerator" to your main TileMap node
+4. Add WorldGenerator.cs to the Node2D
+5. Right click on the Generation Noise variable, pick FastNoiseLite and configure it to your liking
+6. Configure everything under the Tiles category (for example Ground Layer is your TileMaps ground layer, same for other variables. If you don't have a type of tiles just turn off "Generate")
+7. Run the game and it should work if you've configured it correctly.
 
 # How To Add Ore
 1. Create a folder where you will store your ore resources
@@ -42,6 +43,8 @@ Here's an example of what I made using this system:
 4. Add your structure to the WorldGenerator Node under the Structures section
 
 # How To Mine Tiles
+1. Add your TileMap Node to a group called "TileMap"
+2. Add the WorldGenerator Node to a group called "WorldGenerator"
 1. Add a Node2D "Pickaxe" to your Player
 2. Attach the PlayerPickaxe.cs script to it
 3. Add a ShapeCast2D as a child of the Pickaxe node
