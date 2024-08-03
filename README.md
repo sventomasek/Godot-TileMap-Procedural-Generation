@@ -10,8 +10,8 @@ All you have to do is add a Custom Data Layer "ore" to the TileMap and assign it
 Here's an example of what I made using this system:
 
 <p float="left">
-   <img src="https://raw.githubusercontent.com/sventomasek/Godot-TileMap-Procedural-Generation/main/Images/Example1.png" width="500" />
-   <img src="https://raw.githubusercontent.com/sventomasek/Godot-TileMap-Procedural-Generation/main/Images/Example2.gif" width="500" />
+   <img src="https://raw.githubusercontent.com/sventomasek/Godot-TileMap-Procedural-Generation/main/Images/Example1.png" width="400" />
+   <img src="https://raw.githubusercontent.com/sventomasek/Godot-TileMap-Procedural-Generation/main/Images/Example2.gif" width="400" />
 </p>
 
 # How To Install
