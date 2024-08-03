@@ -62,19 +62,23 @@ public partial class PlayerPickaxe : Node2D
 
 		// Breaking animation
 		float healthValue = (float)worldGenerator.tileData["health" + tile.ToString()];
-		float healthPercent = healthValue * 100f;
-		int breakingLayer = (int)worldGenerator.breakingAnimation["Layer"];
-		int breakingSourceID = (int)worldGenerator.breakingAnimation["SourceID"];
-		Vector2I breakingState = Vector2I.Zero;
 
-		if (healthPercent == 100f) breakingState = new Vector2I(0, 0);
-		if (healthPercent <= 80f) breakingState = new Vector2I(1, 0);
-		if (healthPercent <= 60f) breakingState = new Vector2I(2, 0);
-		if (healthPercent <= 40f) breakingState = new Vector2I(3, 0);
-		if (healthPercent <= 20f) breakingState = new Vector2I(4, 0);
-		if (healthPercent <= 0f) breakingState = new Vector2I(5, 0);
+		if ((bool)worldGenerator.breakingAnimation["Generate"])
+		{
+			float healthPercent = healthValue * 100f;
+			int breakingLayer = (int)worldGenerator.breakingAnimation["Layer"];
+			int breakingSourceID = (int)worldGenerator.breakingAnimation["SourceID"];
+			Vector2I breakingState = Vector2I.Zero;
 
-		tileMap.SetCell(breakingLayer, tile, breakingSourceID, breakingState);
+			if (healthPercent == 100f) breakingState = new Vector2I(0, 0);
+			if (healthPercent <= 80f) breakingState = new Vector2I(1, 0);
+			if (healthPercent <= 60f) breakingState = new Vector2I(2, 0);
+			if (healthPercent <= 40f) breakingState = new Vector2I(3, 0);
+			if (healthPercent <= 20f) breakingState = new Vector2I(4, 0);
+			if (healthPercent <= 0f) breakingState = new Vector2I(5, 0);
+
+			tileMap.SetCell(breakingLayer, tile, breakingSourceID, breakingState);
+		}
 
 		// Erase tile and get ore
 		if (healthValue <= 0f)
