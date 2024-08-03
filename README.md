@@ -1,11 +1,14 @@
 # Godot TileMap Procedural Generation
-Procedural Generation which features: ores, structures and a world border.
+Procedural Generation written in C# which uses Noise textures to generate a random terrain.
 
-Written in C# so you need to have Godot .NET installed for it to work.
+Ore and structures can be added to the terrain using custom resources.
+Structures can be drawn on a TileMap in a new Scene, the child Node2Ds will also generate with the structure (e.g., enemies and items).
+
+Also comes with a script that adds the ability to mine the tiles and add the ore to your inventory, all you have to do is add a Custom Data Layer "ore" to the TileMap and assign it to your ore tile with the name of your ore.
 
 # How To Install
 1. Place all of the scripts into your Godot project
-2. Add a Node2D to your main TileMap node
+2. Add a Node2D "WorldGenerator" to your main TileMap node
 3. Add WorldGenerator.cs to the Node2D
 4. Right click on the Generation Noise variable, pick FastNoiseLite and configure it to your liking
 5. Configure everything under the Tiles category (for example Ground Layer is your TileMaps ground layer, same for other variables. If you don't have a type of tiles just turn off "Generate")
@@ -30,6 +33,20 @@ Written in C# so you need to have Godot .NET installed for it to work.
    - Frequency is how close together they will spawn (lower is closer)
    - Threshold is how often it will spawn
 4. Add your structure to the WorldGenerator Node under the Structures section
+
+# How To Mine Tiles
+1. Add a Node2D "Pickaxe" to your Player
+2. Attach the PlayerPickaxe.cs script to it
+3. Add a ShapeCast2D as a child of the Pickaxe node
+4. You can now mine the tiles
+
+# How To Add Ore To Your Inventory
+The PlayerPickaxe.cs script contains an inventory dictionary.
+1. Select your TileMap, open your TileSet and add a Custom Data Layer "ore" with Type "String"
+2. With your TileMap selected open the TileSet tab (at the bottom of Godot where Output, Debugger, etc is located)
+3. Select your Ore Tiles (make sure to be using Select instead of Setup), click on any tile and under "Custom Data" write the name of your ore
+4. Now ores will be added to your inventory in PlayerPickaxe.cs
+5. To see them you can write GD.Print(inventory); in Process function of the script
 
 # Need Help?
 You can contact me in my Discord server https://discord.gg/MsF7kN54T7
