@@ -22,7 +22,6 @@ Also comes with a script that adds the ability to mine the tiles and add the ore
    - Lower frequency makes them spawn in groups more
    - Threshold is how often it will spawn
 4. Add your ore to the WorldGenerator Node under the Ores section (ore at the top will spawn more frequently)
-5. Done
 
 # How To Add Structures (or spawn other nodes)
 1. Create a folder where you will store your structure resources
