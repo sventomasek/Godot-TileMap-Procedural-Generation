@@ -1,10 +1,12 @@
 using Godot;
 using Godot.Collections;
 using System;
+using System.Linq;
 
 public partial class PlayerPickaxe : Node2D
 {
 	[Export] private float miningSpeed = 1f;
+	[Export] private Vector2[] breakAnimAtlasCoords; // The atlas coordinates of each breaking state tile, from least to most damage
 	[Export] private GpuParticles2D mineParticles;
 	[Export] private AudioStreamPlayer breakSFX;
 	[Export] private PackedScene breakVFX;
@@ -63,21 +65,15 @@ public partial class PlayerPickaxe : Node2D
 		// Breaking animation
 		float healthValue = (float)worldGenerator.tileData["health" + tile.ToString()];
 
-		if ((bool)worldGenerator.breakingAnimation["Generate"])
+		if ((bool)worldGenerator.breakingAnimation["Generate"] && breakAnimAtlasCoords != null && breakAnimAtlasCoords.Count() > 0)
 		{
-			float healthPercent = healthValue * 100f;
 			int breakingLayer = (int)worldGenerator.breakingAnimation["Layer"];
 			int breakingSourceID = (int)worldGenerator.breakingAnimation["SourceID"];
-			Vector2I breakingState = Vector2I.Zero;
 
-			if (healthPercent == 100f) breakingState = new Vector2I(0, 0);
-			if (healthPercent <= 80f) breakingState = new Vector2I(1, 0);
-			if (healthPercent <= 60f) breakingState = new Vector2I(2, 0);
-			if (healthPercent <= 40f) breakingState = new Vector2I(3, 0);
-			if (healthPercent <= 20f) breakingState = new Vector2I(4, 0);
-			if (healthPercent <= 0f) breakingState = new Vector2I(5, 0);
+			int damageTilesCount = breakAnimAtlasCoords.Count();
+			int damageState = (int)(healthValue * damageTilesCount);
 
-			tileMap.SetCell(breakingLayer, tile, breakingSourceID, breakingState);
+			tileMap.SetCell(breakingLayer, tile, breakingSourceID, (Vector2I)breakAnimAtlasCoords[Mathf.Clamp(damageTilesCount - damageState, 0, damageTilesCount - 1)]);
 		}
 
 		// Erase tile and get ore
