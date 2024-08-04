@@ -45,10 +45,11 @@ Here's an example of what I made using this system:
 # How To Mine Tiles
 1. Add your TileMap Node to a group called "TileMap"
 2. Add the WorldGenerator Node to a group called "WorldGenerator"
-1. Add a Node2D "Pickaxe" to your Player
-2. Attach the PlayerPickaxe.cs script to it
-3. Add a ShapeCast2D as a child of the Pickaxe node
-4. You can now mine the tiles
+3. Add a Node2D "Pickaxe" to your Player
+4. If you have a breaking animation TileSet assign the Atlas Coordinates of it in "Break Anim Atlas Coords"
+5. Attach the PlayerPickaxe.cs script to it
+6. Add a ShapeCast2D as a child of the Pickaxe node
+7. You can now mine the tiles
 
 # How To Add Ore To Your Inventory
 The PlayerPickaxe.cs script contains an inventory dictionary.
