@@ -46,7 +46,7 @@ Here's an example of what I made using this system:
 1. Add your TileMap Node to a group called "TileMap"
 2. Add the WorldGenerator Node to a group called "WorldGenerator"
 3. Add a Node2D "Pickaxe" to your Player
-4. If you have a breaking animation TileSet assign the Atlas Coordinates of it in "Break Anim Atlas Coords"
+4. If you have a breaking animation TileSet assign the Atlas Coordinates of them in "Break Anim Atlas Coords"
 5. Attach the PlayerPickaxe.cs script to it
 6. Add a ShapeCast2D as a child of the Pickaxe node
 7. You can now mine the tiles
