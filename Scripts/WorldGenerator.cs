@@ -6,17 +6,17 @@ using System;
 public partial class WorldGenerator : Node2D
 {
 	[Export] private bool generate = true;
-	[ExportCategory("Map")]
+	[ExportGroup("Map")]
 	[Export] private String worldSeed; // Leave blank for random
 	[Export] private Vector2I mapSize = new Vector2I(100, 100);
 	[Export] private Dictionary borderSize = new Dictionary{{"Top", 5}, {"Bottom", 5}, {"Left", 5}, {"Right", 5}};
 
-	[ExportCategory("Noise")]
+	[ExportGroup("Noise")]
 	[Export] private FastNoiseLite generationNoise;
 	[Export] private float thresholdMin = -1.0f;
 	[Export] private float thresholdMax = 0.2f;
 
-	[ExportCategory("Tiles")]
+	[ExportGroup("Tiles")]
 	[Export] public Dictionary groundConfig = new Dictionary
 	{
 		{"Generate", true},
@@ -57,10 +57,10 @@ public partial class WorldGenerator : Node2D
 	public TileMap tileMap;
 	public Dictionary tileData = new Dictionary{};
 
-	[ExportCategory("Resources")]
+	[ExportGroup("Resources")]
 	// Ore at the top will be more common than the ones at the bottom, as they will not spawn on top of already generated ore
-	[Export ]private Array<OreData> ores;
-	[Export ]private Array<StructureData> structures;
+	[Export] private Array<OreData> ores;
+	[Export] private Array<StructureData> structures;
 	private bool generateStructures = true;
 
 	private CharacterBody2D player; // Add your player to a group called "Player"
